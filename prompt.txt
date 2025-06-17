@@ -1,0 +1,26 @@
+
+Simpsons Carnival is a web3-based interactive jackpot game themed around the world of The Simpsons.
+
+🎯 Concept:
+Players purchase digital "Keys" (Bronze, Silver, or Gold tiers: $5, $10, $25) to play a game where three animated, Springfield-themed doors appear. Behind each door lies a randomized outcome:
+- ✅ Win: Double your money
+- ♻️ Break-even: Get your key value back
+- ❌ Lose: Forfeit your key cost
+
+A portion of each win contributes to a live, growing jackpot pool. Jackpot payout is triggered by a separate condition (e.g., every 1,000 keys, timer-based, or Golden Donut NFT holder).
+
+💡 Highlights:
+- Fully interactive carnival-style frontend with character animations, sound effects, and Springfield visuals
+- Smart contract-powered randomness (e.g. Chainlink VRF)
+- Live jackpot tracker, player history, and referral system
+- Designed for memetic growth and replayability
+
+📁 File Structure Overview:
+- `contracts/`: Contains the core smart contract (SimpsonsCarnival.sol) and related interfaces/libraries
+- `frontend/`: React/Next.js app with door animations, sounds, and game interface
+- `backend/`: Handles API logic, jackpot monitoring, and player analytics
+- `scripts/`: Deployment scripts, emergency utilities
+- `tests/`: Smart contract, integration, and end-to-end testing
+- `docs/`: Documentation on game rules, jackpot logic, and contract specs
+
+This structure is designed for rapid development and extensibility across frontend, backend, and blockchain layers.
