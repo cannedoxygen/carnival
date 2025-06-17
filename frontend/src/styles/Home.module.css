@@ -1,0 +1,125 @@
+/* Simpsons Carnival Styles */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #FFD90F 0%, #FFA000 100%);
+}
+
+.main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-family: 'Bangers', cursive;
+  font-size: 4rem;
+  margin: 0;
+  text-shadow: 3px 3px 0px #333, 6px 6px 0px #666;
+}
+
+.simpsons {
+  color: #FF6B35;
+  display: block;
+}
+
+.carnival {
+  color: #4ECDC4;
+  display: block;
+}
+
+.tagline {
+  font-family: 'Kavoon', cursive;
+  font-size: 1.5rem;
+  color: #333;
+  margin-top: 1rem;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+}
+
+.gameArea {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border: 4px solid #FF6B35;
+}
+
+.connectPrompt {
+  text-align: center;
+  padding: 3rem;
+}
+
+.connectPrompt h2 {
+  font-family: 'Bangers', cursive;
+  font-size: 2.5rem;
+  color: #FF6B35;
+  margin-bottom: 1rem;
+}
+
+.connectPrompt p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.statsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255,255,255,0.7);
+  border-radius: 10px;
+}
+
+.gameStats {
+  text-align: right;
+}
+
+.gameStats p {
+  margin: 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.leaderboardToggle {
+  background: #4ECDC4;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.leaderboardToggle:hover {
+  background: #45B7B8;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .tagline {
+    font-size: 1rem;
+  }
+  
+  .statsRow {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .gameStats {
+    text-align: center;
+  }
+}

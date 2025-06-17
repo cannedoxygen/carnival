@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useAccount } from 'wagmi';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navigation from '../components/ui/Navigation';
 import WalletConnect from '../components/ui/WalletConnect';
@@ -17,7 +16,6 @@ import styles from '../styles/Home.module.css';
 type GameState = 'idle' | 'purchasing' | 'selecting' | 'revealing' | 'completed';
 
 export default function Home() {
-  const { address, isConnected } = useAccount();
   const { playSound } = useSound();
   const { 
     playGame, 
@@ -32,10 +30,7 @@ export default function Home() {
   const [selectedDoor, setSelectedDoor] = useState<number | null>(null);
   const [gameResult, setGameResult] = useState<'win' | 'lose' | 'breakeven' | null>(null);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
-
-  useEffect(() => {
-    playSound('carnival-ambience', { loop: true, volume: 0.3 });
-  }, []);
+  const [isConnected, setIsConnected] = useState(false);
 
   const handleKeyPurchase = (keyType: 'bronze' | 'silver' | 'gold') => {
     setSelectedKey(keyType);
@@ -52,7 +47,7 @@ export default function Home() {
     
     try {
       const result = await playGame(selectedKey, doorNumber);
-      setGameResult(result.outcome);
+      setGameResult(result.outcome as 'win' | 'lose' | 'breakeven');
       setGameState('completed');
       
       if (result.outcome === 'win') {
@@ -104,6 +99,12 @@ export default function Home() {
               <h2>Welcome to the Carnival!</h2>
               <p>Connect your wallet to start playing</p>
               <WalletConnect />
+              <button 
+                onClick={() => setIsConnected(true)}
+                className="mt-4 bg-green-500 text-white px-4 py-2 rounded"
+              >
+                Demo Mode (No Wallet)
+              </button>
             </motion.div>
           ) : (
             <>
@@ -115,7 +116,7 @@ export default function Home() {
                     onClick={() => setShowLeaderboard(!showLeaderboard)}
                     className={styles.leaderboardToggle}
                   >
-                    {showLeaderboard ? '<® Game' : '<Æ Leaders'}
+                    {showLeaderboard ? 'ðŸŽ® Game' : 'ðŸ† Leaders'}
                   </button>
                 </motion.div>
               </div>
@@ -173,16 +174,6 @@ export default function Home() {
           )}
         </div>
       </main>
-
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Kavoon&family=Bangers&display=swap');
-        
-        body {
-          background: linear-gradient(135deg, #FFD90F 0%, #FFA000 100%);
-          min-height: 100vh;
-          font-family: 'Arial', sans-serif;
-        }
-      `}</style>
     </div>
   );
 }
